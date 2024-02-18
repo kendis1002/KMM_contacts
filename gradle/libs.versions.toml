@@ -16,16 +16,18 @@ junit = "4.13.2"
 kotlin = "1.9.22"
 kotlinxDatetime = "0.4.0"
 mvvmCore = "0.16.1"
-runtime = "1.5.5"
+runtime = "2.0.1"
 buildKonfig = "0.15.1"
 
 [libraries]
+sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "runtime" }
+sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "runtime" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 mvvm-compose = { module = "dev.icerock.moko:mvvm-compose", version.ref = "mvvmCore" }
 mvvm-core = { module = "dev.icerock.moko:mvvm-core", version.ref = "mvvmCore" }
 mvvm-flow = { module = "dev.icerock.moko:mvvm-flow", version.ref = "mvvmCore" }
 mvvm-flow-compose = { module = "dev.icerock.moko:mvvm-flow-compose", version.ref = "mvvmCore" }
-sqldelight-coroutines-extensions = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "runtime" }
+sqldelight-coroutines-extensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "runtime" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -38,7 +40,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
-sqldelight-runtime = { module = "com.squareup.sqldelight:runtime", version.ref = "runtime" }
+sqldelight-runtime = { module = "app.cash.sqldelight:runtime", version.ref = "runtime" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -46,3 +48,4 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildKonfig" }
+sqldelight = { id = "app.cash.sqldelight", version.ref = "runtime" }

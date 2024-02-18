@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.buildKonfig)
+    alias(libs.plugins.sqldelight)
 }
 
 buildkonfig {
@@ -64,6 +65,10 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.sqldelight.android.driver)
+        }
+        iosMain.dependencies {
+            implementation(libs.sqldelight.native.driver)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -113,6 +118,13 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+    }
+    sqldelight {
+        databases {
+            create("ContactDatabase") {
+                packageName.set("org.example.project.database")
+            }
+        }
     }
     dependencies {
         debugImplementation(libs.compose.ui.tooling)
