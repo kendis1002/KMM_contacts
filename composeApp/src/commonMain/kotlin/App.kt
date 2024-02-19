@@ -10,11 +10,16 @@ import contacts.presentation.components.ContactListScreen
 import core.presentation.ContactsTheme
 import dev.icerock.moko.mvvm.compose.getViewModel
 import dev.icerock.moko.mvvm.compose.viewModelFactory
+import di.AppModule
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun App(darkTheme: Boolean, dynamicColor: Boolean) {
+fun App(
+    darkTheme: Boolean,
+    dynamicColor: Boolean,
+    appModule: AppModule
+) {
     ContactsTheme(
         darkTheme = darkTheme,
         dynamicColor = dynamicColor
@@ -22,7 +27,7 @@ fun App(darkTheme: Boolean, dynamicColor: Boolean) {
         val viewModel = getViewModel(
             key = "contacts-list-screen",
             factory = viewModelFactory {
-                ContactListViewModel()
+                ContactListViewModel(appModule.contactDataSource)
             }
         )
         val state by viewModel.state.collectAsState()
@@ -33,7 +38,8 @@ fun App(darkTheme: Boolean, dynamicColor: Boolean) {
             ContactListScreen(
                 state = state,
                 newContact = viewModel.newContact,
-                onEvent = viewModel::onEvent)
+                onEvent = viewModel::onEvent
+            )
         }
     }
 }
